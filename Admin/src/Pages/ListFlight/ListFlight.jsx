@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './ListFlight.css'
-
+const fetch_url = import.meta.env.VITE_BACKEND_URL
 
 const ListFlight = () => {
 
@@ -8,7 +8,7 @@ const ListFlight = () => {
 
   const fetchAllFlights = async () => {
     try {
-      const response = await fetch('http://localhost:3001/list_all_flight', {
+      const response = await fetch(fetch_url + '/list_all_flight', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ const ListFlight = () => {
   const Handle_Flight_Delete = async (flight) => {
     try {
       const postData = { items: flight }
-      const response = await fetch('http://localhost:3001/delete_flight', {
+      const response = await fetch(fetch_url + '/delete_flight', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
